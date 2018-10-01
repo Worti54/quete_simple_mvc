@@ -1,0 +1,17 @@
+{
+    "name": "worti/quete_simple_mvc",
+    "description": "quete MVC",
+    "authors": [
+        {
+            "name": "Remi Wortemann",
+            "email": "remi.wortemann@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+
+}
