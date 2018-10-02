@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title> MVC </title>
+    <title> MVC 3 </title>
 </head>
 <body>
 <section>
@@ -14,6 +14,7 @@
             <li><?= $item['title'] ?></li>
         <?php endforeach ?>
     </ul>
+
 </section>
 </body>
 </html>
