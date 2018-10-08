@@ -1,0 +1,17 @@
+
+{% extends "layout.html.twig" %}
+
+
+{% block title %}MVC 4 categories{% endblock %}
+
+
+{% block content %}
+    <h1>Categories</h1>
+    <ul>
+        {% for category in categories %}<?php foreach ($categories as $category) : ?>
+            <li>{{ category.name }}</li>
+
+        {% endfor %}
+    </ul>
+
+{% endblock %}
