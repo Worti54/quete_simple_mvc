@@ -64,17 +64,16 @@ class CategoryController extends AbstractController
     }
     public function delete($id)
     {
-        if (!empty($_POST)) {
+
             $categoryManager = new CategoryManager($this->pdo);
             $category = $categoryManager->selectOneById($id);
-
+        if (!empty($_POST)) {
             $categoryManager->delete($category);
-
             header('Location: /categories');
             exit();
         }
-        // le formulaire HTML est affiché (vue à créer)
-        return $this->twig->render('deleteCategory.html.twig');
+        // le formulaire HTML est affiché
+        return $this->twig->render('deleteCategory.html.twig', ['category' => $category]);
 
 
     }

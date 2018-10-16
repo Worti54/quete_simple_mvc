@@ -71,7 +71,6 @@ class ItemController extends AbstractController
             $item = $itemManager->selectOneById($id);
 
             if (!empty($_POST)) {
-                $item->setTitle($_POST['title']);
                 $itemManager->delete($item);
                 header('Location: /');
                 exit();
