@@ -1,0 +1,18 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}delete{% endblock %}
+
+{% block content %}
+
+
+    <h1>Supprimer un item</h1>
+
+    <form method="post">
+
+        <p>{{ item.title }}</p>
+        <button type="submit" value="supprimer" name="supprimer">supprimer</button>
+
+
+    </form>
+
+{% endblock %}

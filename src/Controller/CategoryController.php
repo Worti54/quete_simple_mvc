@@ -3,36 +3,79 @@
 namespace Controller;
 
 use Model\CategoryManager;
-use View\View;
+use Model;
 
-use Twig_Loader_Filesystem;
-use Twig_Environment;
-
-
-class CategoryController
+class CategoryController extends AbstractController
 {
-    private $twig;
-
-    public function __construct()
-    {
-        $loader = new Twig_Loader_Filesystem(__DIR__.'/../View');
-        $this->twig = new Twig_Environment($loader);
-    }
     public function index()
     {
-        $categoryManager = new CategoryManager();
-        $categories = $categoryManager->selectAllCategories();
-        //require __DIR__ . '/../View/category.html.twig';
+        $categoryManager = new Model\CategoryManager($this->pdo);
+        $categories = $categoryManager->selectAll();
+
         return $this->twig->render('category.html.twig', ['categories' => $categories]);
 
     }
+
     public function show(int $id)
     {
-        $categoryManager = new CategoryManager();
-        $category = $categoryManager->selectOneCategory($id);
+        $categoryManager = new Model\CategoryManager($this->pdo);
+        $category = $categoryManager->selectOneById($id);
 
         //require __DIR__ . '/../View/showCategory.html.twig';
         return $this->twig->render('showCategory.html.twig', ['category' => $category]);
     }
 
+    public function add()
+    {
+        if (!empty($_POST)) {
+            // TODO : validations des valeurs saisies dans le form
+            // création d'un nouvel objet Category et hydratation avec les données du formulaire
+            $category = new Model\Category();
+            $category->setName($_POST['name']);
+
+            $categoryManager = new CategoryManager($this->pdo);
+            // l'objet $category hydraté est simplement envoyé en paramètre de insert()
+            $categoryManager->insert($category);
+            // si tout se passe bien, redirection
+            header('Location: /categories');
+            exit();
+        }
+        // le formulaire HTML est affiché (vue à créer)
+        return $this->twig->render('addCategory.html.twig');
+    }
+
+    public function edit($id)
+    {
+
+        $categoryManager = new CategoryManager($this->pdo);
+        $category = $categoryManager->selectOneById($id);
+
+        if (!empty($_POST)) {
+            $category->setName($_POST['name']);
+            $categoryManager->update($category);
+
+            header('Location: /categories');
+            exit();
+        }
+        // le formulaire HTML est affiché (vue à créer)
+        return $this->twig->render('editCategory.html.twig', ['category' => $category]);
+
+
+    }
+    public function delete($id)
+    {
+        if (!empty($_POST)) {
+            $categoryManager = new CategoryManager($this->pdo);
+            $category = $categoryManager->selectOneById($id);
+
+            $categoryManager->delete($category);
+
+            header('Location: /categories');
+            exit();
+        }
+        // le formulaire HTML est affiché (vue à créer)
+        return $this->twig->render('deleteCategory.html.twig');
+
+
+    }
 }

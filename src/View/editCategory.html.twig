@@ -1,0 +1,18 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}edit{% endblock %}
+
+{% block content %}
+
+
+    <h1>Editer une category</h1>
+
+    <form method="post">
+
+        <input type="text" name="name" value="{{ category.name }}">
+        <button type="submit" value="editer" name="envoyer">editer</button>
+
+
+    </form>
+
+{% endblock %}

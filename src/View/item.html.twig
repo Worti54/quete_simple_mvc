@@ -10,9 +10,11 @@
     <h1>Items</h1>
     <ul>
         {% for item in items %}
-            <li>{{ item.title }}</li>
+            <li>{{ item.title }} <a href="items/edit/{{ item.id }}" class="btn btn-info">Editer</a> <a href="items/delete/{{ item.id }}" class="btn btn-danger">Supprimer</a></li>
         {% endfor %}
     </ul>
+    <a href="items/add" class="btn btn-primary">Ajouter un item</a>
+
 
 {% endblock %}
 

@@ -1,0 +1,18 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}edit{% endblock %}
+
+{% block content %}
+
+
+    <h1>Supprimer une category</h1>
+
+    <form method="post">
+
+        <p>{{ category.name }}</p>
+        <button type="submit" value="supprimer" name="supprimer">supprimer</button>
+
+
+    </form>
+
+{% endblock %}

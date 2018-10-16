@@ -26,6 +26,10 @@ class ComposerStaticInita7289cce4d39b39e134d9ba46555dbf6
         array (
             'FastRoute\\' => 10,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -45,6 +49,10 @@ class ComposerStaticInita7289cce4d39b39e134d9ba46555dbf6
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
     );
 
     public static $fallbackDirsPsr4 = array (
@@ -62,6 +70,7 @@ class ComposerStaticInita7289cce4d39b39e134d9ba46555dbf6
     );
 
     public static $classMap = array (
+        'App\\Connection' => __DIR__ . '/../..' . '/app/Connection.php',
         'Controller\\CategoryController' => __DIR__ . '/../..' . '/src/Controller/CategoryController.php',
         'Controller\\ItemController' => __DIR__ . '/../..' . '/src/Controller/ItemController.php',
         'FastRoute\\BadRouteException' => __DIR__ . '/..' . '/nikic/fast-route/src/BadRouteException.php',
